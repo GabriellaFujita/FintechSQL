@@ -6,26 +6,24 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import br.com.fiap.bean.Pessoa;
+import br.com.fiap.bean.Gasto;
 import br.com.fiap.jdbc.EmpresaDBManager;
 
-public class FintechPessoaDAO implements PessoaDAO {
+public class FintechGastoDAO implements GastoDAO {
 
   private Connection conexao;
 
-  public void cadastrar(Pessoa pessoa) {
+  public void cadastrar(Gasto gasto) {
     PreparedStatement stmt = null;
 
     try {
       conexao = EmpresaDBManager.obterConexao();
-      String sql = "INSERT INTO T_PESSOA(CD_PESSOA, NM_PESSOA, NM_CPF, DT_NASCIMENTO, DS_EMAIL) VALUES (SQ_PESSOA.NEXTVAL, ?, ?, ?, ?)";
+      String sql = "INSERT INTO T_GASTO(CD_GASTO, NM_GASTO, VL_GASTO, DS_TIPO) VALUES (SQ_GASTO.NEXTVAL, ?, ?, ?)";
       stmt = conexao.prepareStatement(sql);
-      stmt.setString(1, pessoa.getNome());
-      stmt.setString(2, pessoa.getCpf());
-      java.sql.Date data = new java.sql.Date(pessoa.getDataNascimento().getTimeInMillis());
-      stmt.setDate(3, data);
-      stmt.setString(4, pessoa.getEmail());
-            
+      stmt.setString(1, gasto.getNome());
+      stmt.setDouble(2, gasto.getValor());
+      stmt.setString(3, gasto.getTipo());
+          
       stmt.executeUpdate();
     } catch (SQLException e) {
     	e.printStackTrace();
@@ -39,30 +37,27 @@ public class FintechPessoaDAO implements PessoaDAO {
     }
   } 
 
-  public List<Pessoa> listar() {
-    //Cria uma lista de pessoas
-    List<Pessoa> lista = new ArrayList<Pessoa>();
+  public List<Gasto> listar() {
+    //Cria uma lista de gastos
+    List<Gasto> lista = new ArrayList<Gasto>();
     PreparedStatement stmt = null;
     ResultSet rs = null;
     try {
       conexao = EmpresaDBManager.obterConexao();
-      stmt = conexao.prepareStatement("SELECT * FROM T_PESSOA");
+      stmt = conexao.prepareStatement("SELECT * FROM T_GASTO");
       rs = stmt.executeQuery();
 
       //Percorre todos os registros encontrados
       while (rs.next()) {
-        int codigo = rs.getInt("CD_PESSOA");
-        String nome = rs.getString("NM_PESSOA");
-        String cpf = rs.getString("NM_CPF");
-        java.sql.Date data = rs.getDate("DT_NASCIMENTO");
-        Calendar dataNascimento = Calendar.getInstance();
-        dataNascimento.setTimeInMillis(data.getTime());
-        String email = rs.getString("DS_EMAIL");
+        int codigo = rs.getInt("CD_GASTO");
+        String nome = rs.getString("NM_GASTO");
+        double valor = rs.getDouble("VL_GASTO");
+        String tipo = rs.getString("DS_TIPO");
         
-        //Cria um objeto Pessoa com as informações encontradas
-        Pessoa pessoa = new Pessoa(codigo, nome, cpf, dataNascimento, email);
-        //Adiciona a pessoa na lista
-        lista.add(pessoa);
+        //Cria um objeto Gasto com as informações encontradas
+        Gasto gasto = new Gasto(codigo, nome, valor, tipo);
+        //Adiciona a meta na lista
+        lista.add(gasto);
       }
     } catch (SQLException e) {
       e.printStackTrace();
@@ -78,19 +73,17 @@ public class FintechPessoaDAO implements PessoaDAO {
     return lista;
   }
 
-  public void atualizar(Pessoa pessoa){
+  public void atualizar(Gasto gasto){
     PreparedStatement stmt = null;
 
     try {
       conexao = EmpresaDBManager.obterConexao();
-      String sql = "UPDATE T_PESSOA SET NM_PESSOA = ?, NM_CPF = ?, DT_NASCIMENTO = ?, DS_EMAIL = ? WHERE CD_PESSOA = ?";
+      String sql = "UPDATE T_GASTO SET NM_GASTO = ?, VL_GASTO = ?, DS_TIPO = ? WHERE CD_GASTO = ?";
       stmt = conexao.prepareStatement(sql);
-      stmt.setString(1, pessoa.getNome());
-      stmt.setString(2, pessoa.getCpf());
-      java.sql.Date data = new java.sql.Date(pessoa.getDataNascimento().getTimeInMillis());
-      stmt.setDate(3, data);
-      stmt.setString(4, pessoa.getEmail());
-      stmt.setInt(5, pessoa.getCodigo());
+      stmt.setString(1, gasto.getNome());
+      stmt.setDouble(2, gasto.getValor());
+      stmt.setString(3, gasto.getTipo());
+      stmt.setInt(4, gasto.getCodigo());
 
       stmt.executeUpdate();
     } catch (SQLException e) {
@@ -110,7 +103,7 @@ public class FintechPessoaDAO implements PessoaDAO {
 
     try {
       conexao = EmpresaDBManager.obterConexao();
-      String sql = "DELETE FROM T_PESSOA WHERE CD_PESSOA = ?";
+      String sql = "DELETE FROM T_GASTO WHERE CD_GASTO = ?";
       stmt = conexao.prepareStatement(sql);
       stmt.setInt(1, codigo);
       stmt.executeUpdate();
@@ -126,26 +119,23 @@ public class FintechPessoaDAO implements PessoaDAO {
     }
   }
 
-  public Pessoa buscarPorId(int codigoBusca){
-    Pessoa pessoa = null;
+  public Gasto buscarPorId(int codigoBusca){
+    Gasto gasto = null;
     PreparedStatement stmt = null;
     ResultSet rs = null;
     try {
       conexao = EmpresaDBManager.obterConexao();
-      stmt = conexao.prepareStatement("SELECT * FROM T_PESSOA WHERE CD_PESSOA = ?");
+      stmt = conexao.prepareStatement("SELECT * FROM T_GASTO WHERE CD_GASTO = ?");
       stmt.setInt(1, codigoBusca);
       rs = stmt.executeQuery();
 
       if (rs.next()){
-        int codigo = rs.getInt("CD_PESSOA");
-        String nome = rs.getString("NM_PESSOA");
-        String cpf = rs.getString("NM_CPF");
-        java.sql.Date data = rs.getDate("DT_NASCIMENTO");
-        Calendar dataNascimento = Calendar.getInstance();
-        dataNascimento.setTimeInMillis(data.getTime());
-        String email = rs.getString("DS_EMAIL");
+        int codigo = rs.getInt("CD_GASTO");
+        String nome = rs.getString("NM_GASTO");
+        double valor = rs.getDouble("VL_GASTO");
+        String tipo = rs.getString("DS_TIPO");
         
-        pessoa = new Pessoa(codigo, nome, cpf, dataNascimento, email);
+        gasto = new Gasto(codigo, nome, valor, tipo);
       }
       
     } catch (SQLException e) {
@@ -159,7 +149,6 @@ public class FintechPessoaDAO implements PessoaDAO {
         e.printStackTrace();
       }
     }
-    return pessoa;
+    return gasto;
   }
 }
-  
