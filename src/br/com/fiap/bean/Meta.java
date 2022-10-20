@@ -14,7 +14,7 @@ public class Meta {
 	public String nome;
 	public Date data1;
 	public Calendar dataCriacao;
-	public Date data2;
+	public Date dataFinal;
 	public double valor;
 	
 	
@@ -48,11 +48,11 @@ public class Meta {
 	public void setDataCriacao(Calendar dataCriacao) {
 		this.dataCriacao = dataCriacao;
 	}
-	public Date getData2() {
-		return data2;
+	public Date getDataFinal() {
+		return dataFinal;
 	}
 	public void setData2(Date data2) {
-		this.data2 = data2;
+		this.dataFinal = data2;
 	}
 	public double getValor() {
 		return valor;
