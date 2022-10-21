@@ -1,6 +1,5 @@
 package br.com.fiap.bean;
 
-import java.sql.Date;
 import java.util.Calendar;
 
 public class Transacao {
@@ -11,7 +10,6 @@ public class Transacao {
 	}
 	public int codigo;
 	public double valor;
-	public Date data;
 	public Calendar dataTransacao;
 	public int codigoGasto;
 	public int codigoReceita;
@@ -28,12 +26,6 @@ public class Transacao {
 	}
 	public void setValor(double valor) {
 		this.valor = valor;
-	}
-	public Date getData() {
-		return data;
-	}
-	public void setData(Date data) {
-		this.data = data;
 	}
 	public Calendar getDataTransacao() {
 		return dataTransacao;

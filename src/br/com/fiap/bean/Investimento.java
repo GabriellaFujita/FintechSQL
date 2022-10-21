@@ -9,7 +9,6 @@ public class Investimento {
 	public double valor;
 	public String tipo;
 	public double valorRendimento;
-	public java.sql.Date data;
 	public Calendar dataDisponivel;
 	
 	
@@ -66,16 +65,6 @@ public class Investimento {
 
 	public void setValorRendimento(double valorRendimento) {
 		this.valorRendimento = valorRendimento;
-	}
-
-
-	public java.sql.Date getData() {
-		return data;
-	}
-
-
-	public void setData(java.sql.Date data) {
-		this.data = data;
 	}
 
 

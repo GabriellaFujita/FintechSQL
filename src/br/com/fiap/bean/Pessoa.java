@@ -1,6 +1,5 @@
 package br.com.fiap.bean;
 
-import java.sql.Date;
 import java.util.Calendar;
 
 public class Pessoa {
@@ -12,7 +11,6 @@ public class Pessoa {
 	public int codigo;
 	public String nome;
 	public String cpf;
-	public Date data;
 	public Calendar dataNascimento;
 	public String email;
 	
@@ -34,12 +32,6 @@ public class Pessoa {
 	}
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
-	}
-	public Date getData() {
-		return data;
-	}
-	public void setData(Date data) {
-		this.data = data;
 	}
 	public Calendar getDataNascimento() {
 		return dataNascimento;

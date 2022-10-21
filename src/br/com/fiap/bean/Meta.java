@@ -1,6 +1,5 @@
 package br.com.fiap.bean;
 
-import java.sql.Date;
 import java.util.Calendar;
 
 public class Meta {
@@ -12,9 +11,8 @@ public class Meta {
 	public int codigo;
 	public int codigoPessoa;
 	public String nome;
-	public Date data1;
 	public Calendar dataCriacao;
-	public Date dataFinal;
+	public Calendar dataFinal;
 	public double valor;
 	
 	
@@ -36,23 +34,17 @@ public class Meta {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Date getData1() {
-		return data1;
-	}
-	public void setData1(Date data1) {
-		this.data1 = data1;
-	}
 	public Calendar getDataCriacao() {
 		return dataCriacao;
 	}
 	public void setDataCriacao(Calendar dataCriacao) {
 		this.dataCriacao = dataCriacao;
 	}
-	public Date getDataFinal() {
+	public Calendar getDataFinal() {
 		return dataFinal;
 	}
-	public void setData2(Date data2) {
-		this.dataFinal = data2;
+	public void setDataFinal(Calendar dataFinal) {
+		this.dataFinal = dataFinal;
 	}
 	public double getValor() {
 		return valor;
