@@ -15,3 +15,4 @@ public interface GastoDAO {
 	    public Gasto buscarPorId(int codigoBusca);
 	
 }
+
