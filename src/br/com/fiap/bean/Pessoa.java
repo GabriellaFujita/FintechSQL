@@ -1,8 +1,6 @@
 package br.com.fiap.bean;
 
-import java.sql.Date;
 import java.time.LocalDate;
-import java.util.Calendar;
 
 public class Pessoa {
 
@@ -11,15 +9,13 @@ public class Pessoa {
 	public int codigo;
 	public String nome;
 	public String cpf;
-	public LocalDate data;
 	public LocalDate dataNascimento;
 	public String email;
 
-	public Pessoa(int codigo, String nome, String cpf, LocalDate data, LocalDate dataNascimento, String email) {
+	public Pessoa(int codigo, String nome, String cpf, LocalDate dataNascimento, String email) {
 		this.codigo = codigo;
 		this.nome = nome;
 		this.cpf = cpf;
-		this.data = data;
 		this.dataNascimento = dataNascimento;
 		this.email = email;
 	}
@@ -42,12 +38,6 @@ public class Pessoa {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-	public LocalDate getData() {
-		return data;
-	}
-	public void setData(LocalDate data) {
-		this.data = data;
-	}
 	public LocalDate getDataNascimento() {
 		return dataNascimento;
 	}
@@ -67,7 +57,6 @@ public class Pessoa {
 				"codigo=" + codigo +
 				", nome=" + nome +
 				", cpf=" + cpf +
-				", data=" + data +
 				", dataNascimento=" + dataNascimento +
 				", email=" + email +
 				'}';

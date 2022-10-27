@@ -3,17 +3,17 @@ package br.com.fiap.teste;
 
 import br.com.fiap.bean.Meta;
 
-import br.com.fiap.dao.FintechMetaDAO;
+import br.com.fiap.dao.OracleMetaDAO;
 
 import java.time.LocalDate;
 
 public class MetaDaoTeste {
     public static void main(String[] args){
         //Instancia o DAO
-        FintechMetaDAO dao = new FintechMetaDAO();
+        OracleMetaDAO dao = new OracleMetaDAO();
 
         //Instancia a Meta
-        Meta meta = new Meta(1, 1, "nome", LocalDate.now(), LocalDate.now(), LocalDate.now(),0);
+        Meta meta = new Meta(1, 1, "nome", LocalDate.now(), LocalDate.now(),0);
 
 
         //Cadastra no banco de dados

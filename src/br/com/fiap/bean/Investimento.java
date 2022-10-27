@@ -1,8 +1,6 @@
 package br.com.fiap.bean;
 
-import java.sql.Date;
 import java.time.LocalDate;
-import java.util.Calendar;
 
 public class Investimento {
 
@@ -11,17 +9,15 @@ public class Investimento {
 	public double valor;
 	public String tipo;
 	public double valorRendimento;
-	public LocalDate data;
 	public LocalDate dataDisponivel;
 
 
-	public Investimento(int codigo, String nome, double valor, String tipo, double valorRendimento, LocalDate data, LocalDate dataDisponivel) {
+	public Investimento(int codigo, String nome, double valor, String tipo, double valorRendimento, LocalDate dataDisponivel) {
 		this.codigo = codigo;
 		this.nome = nome;
 		this.valor = valor;
 		this.tipo = tipo;
 		this.valorRendimento = valorRendimento;
-		this.data = data;
 		this.dataDisponivel = dataDisponivel;
 	}
 
@@ -77,14 +73,6 @@ public class Investimento {
 		this.valorRendimento = valorRendimento;
 	}
 
-	public LocalDate getData() {
-		return data;
-	}
-
-	public void setData(LocalDate data) {
-		this.data = data;
-	}
-
 
 	public LocalDate getDataDisponivel() {
 		return dataDisponivel;
@@ -102,7 +90,6 @@ public class Investimento {
 				", valor=" + valor +
 				", tipo=" + tipo +
 				", valorRendimento=" + valorRendimento +
-				", data=" + data +
 				", dataDisponivel=" + dataDisponivel +
 				'}';
 	}

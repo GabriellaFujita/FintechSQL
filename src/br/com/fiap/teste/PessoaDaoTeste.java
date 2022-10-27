@@ -2,17 +2,17 @@ package br.com.fiap.teste;
 
 
 import br.com.fiap.bean.Pessoa;
-import br.com.fiap.dao.FintechPessoaDAO;
+import br.com.fiap.dao.OraclePessoaDAO;
 
 import java.time.LocalDate;
 
 public class PessoaDaoTeste {
     public static void main(String[] args){
         //Instancia o DAO
-        FintechPessoaDAO dao = new FintechPessoaDAO();
+        OraclePessoaDAO dao = new OraclePessoaDAO();
 
         //Instancia a Pessoa
-       Pessoa pessoa= new Pessoa(1, "teste", "teste",LocalDate.now(),LocalDate.now(),"email@teste");
+       Pessoa pessoa= new Pessoa(1, "teste", "teste",LocalDate.now(),"email@teste");
 
 
         //Cadastra no banco de dados

@@ -1,7 +1,7 @@
 package br.com.fiap.teste;
 
 import br.com.fiap.bean.Investimento;
-import br.com.fiap.dao.FintechInvestimentoDAO;
+import br.com.fiap.dao.OracleInvestimentoDAO;
 
 import java.time.LocalDate;
 
@@ -9,10 +9,10 @@ import java.time.LocalDate;
 public class InvestimentoDaoTeste {
     public static void main(String[] args){
     //Instancia o DAO
-    FintechInvestimentoDAO dao = new FintechInvestimentoDAO();
+    OracleInvestimentoDAO dao = new OracleInvestimentoDAO();
 
     //Instancia o investimento
-    Investimento investimento = new Investimento(1,"teste",50, "tipo", 50,LocalDate.now(),LocalDate.now());
+    Investimento investimento = new Investimento(1,"teste",50, "tipo", 50, LocalDate.now());
 
 
     //Cadastra no banco de dados

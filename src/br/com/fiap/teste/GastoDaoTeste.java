@@ -1,13 +1,13 @@
 package br.com.fiap.teste;
 
 import br.com.fiap.bean.Gasto;
-import br.com.fiap.dao.FintechGastoDAO;
+import br.com.fiap.dao.OracleGastoDAO;
 
 public class GastoDaoTeste {
 
         public static void main(String[] args) {
             //Instancia o DAO
-            FintechGastoDAO dao = new FintechGastoDAO();
+            OracleGastoDAO dao = new OracleGastoDAO();
 
             //Instancia o gasto
             Gasto gasto = new Gasto(1,"teste",50.0, "tipo teste");
