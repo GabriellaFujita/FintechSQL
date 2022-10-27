@@ -11,13 +11,19 @@ public class Pessoa {
 	public int codigo;
 	public String nome;
 	public String cpf;
-	public Date data;
+	public LocalDate data;
 	public LocalDate dataNascimento;
 	public String email;
 
-	public Pessoa(int codigo2, String nome2, String cpf2, LocalDate dataNascimento2, String email2) {
-		// TODO Auto-generated constructor stub
+	public Pessoa(int codigo, String nome, String cpf, LocalDate data, LocalDate dataNascimento, String email) {
+		this.codigo = codigo;
+		this.nome = nome;
+		this.cpf = cpf;
+		this.data = data;
+		this.dataNascimento = dataNascimento;
+		this.email = email;
 	}
+
 	public int getCodigo() {
 		return codigo;
 	}
@@ -36,10 +42,10 @@ public class Pessoa {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-	public Date getData() {
+	public LocalDate getData() {
 		return data;
 	}
-	public void setData(Date data) {
+	public void setData(LocalDate data) {
 		this.data = data;
 	}
 	public LocalDate getDataNascimento() {

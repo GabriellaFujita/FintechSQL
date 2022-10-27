@@ -1,8 +1,7 @@
 package br.com.fiap.teste;
 
-import br.com.fiap.bean.Meta;
+
 import br.com.fiap.bean.Pessoa;
-import br.com.fiap.dao.FintechMetaDAO;
 import br.com.fiap.dao.FintechPessoaDAO;
 
 import java.time.LocalDate;
@@ -13,7 +12,7 @@ public class PessoaDaoTeste {
         FintechPessoaDAO dao = new FintechPessoaDAO();
 
         //Instancia a Pessoa
-       Pessoa pessoa= new Pessoa(1, "teste", "teste",LocalDate.now(),"email@teste");
+       Pessoa pessoa= new Pessoa(1, "teste", "teste",LocalDate.now(),LocalDate.now(),"email@teste");
 
 
         //Cadastra no banco de dados

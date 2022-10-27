@@ -3,6 +3,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.Clock;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -21,7 +24,7 @@ public class FintechTransacaoDAO implements TransacaoDAO {
       String sql = "INSERT INTO T_TRANSACAO(CD_TRANSACAO, VL_TRANSACAO, DT_TRANSACAO, CD_GASTO, CD_RECEITA, CD_INVESTIMENTO, CD_PESSOA) VALUES (SQ_TRANSACAO.NEXTVAL, ?, ?, ?, ?, ?, ?)";
       stmt = conexao.prepareStatement(sql);
       stmt.setDouble(1, transacao.getValor());
-      java.sql.Date data = new java.sql.Date(transacao.getDataTransacao().getTimeInMillis());
+      java.sql.Date data = new java.sql.Date(transacao.getDataTransacao().getDayOfYear());
       stmt.setDate(2, data);
       stmt.setInt(3, transacao.getCodigoGasto());
       stmt.setInt(4, transacao.getCodigoReceita());
@@ -42,7 +45,7 @@ public class FintechTransacaoDAO implements TransacaoDAO {
   } 
 
   public List<Transacao> listar() {
-    //Cria uma lista de transações
+    //Cria uma lista de transaï¿½ï¿½es
     List<Transacao> lista = new ArrayList<Transacao>();
     PreparedStatement stmt = null;
     ResultSet rs = null;
@@ -63,9 +66,9 @@ public class FintechTransacaoDAO implements TransacaoDAO {
         int codigoInvestimento = rs.getInt("CD_INVESTIMENTO");
         int codigoPessoa = rs.getInt("CD_PESSOA");
        
-        //Cria um objeto Transacao com as informações encontradas
-        Transacao transacao = new Transacao(codigo, valor, dataTransacao, codigoGasto, codigoReceita, codigoInvestimento, codigoPessoa);
-        //Adiciona a transação na lista
+        //Cria um objeto Transacao com as informaï¿½ï¿½es encontradas
+        Transacao transacao = new Transacao(codigo, valor, LocalDate.now(),LocalDateTime.now(Clock.systemDefaultZone()), codigoGasto, codigoReceita, codigoInvestimento, codigoPessoa);
+        //Adiciona a transaï¿½ï¿½o na lista
         lista.add(transacao);
       }
     } catch (SQLException e) {
@@ -90,7 +93,7 @@ public class FintechTransacaoDAO implements TransacaoDAO {
       String sql = "UPDATE T_TRANSACAO SET VL_TRANSACAO = ?, DT_TRANSACAO = ?, CD_GASTO = ?, CD_RECEITA = ?, CD_INVESTIMENTO = ?, CD_PESSOA = ? WHERE CD_TRANSACAO = ?";
       stmt = conexao.prepareStatement(sql);
       stmt.setDouble(1, transacao.getValor());
-      java.sql.Date data = new java.sql.Date(transacao.getDataTransacao().getTimeInMillis());
+      java.sql.Date data = new java.sql.Date(transacao.getDataTransacao().getDayOfYear());
       stmt.setDate(2, data);
       stmt.setInt(3, transacao.getCodigoGasto());
       stmt.setInt(4, transacao.getCodigoReceita());
@@ -153,7 +156,7 @@ public class FintechTransacaoDAO implements TransacaoDAO {
 	      int codigoInvestimento = rs.getInt("CD_INVESTIMENTO");
 	      int codigoPessoa = rs.getInt("CD_PESSOA");
 	      	
-	      transacao = new Transacao(codigo, valor, dataTransacao, codigoGasto, codigoReceita, codigoInvestimento, codigoPessoa);
+	      transacao = new Transacao(codigo, valor,LocalDate.now(), LocalDateTime.now(), codigoGasto, codigoReceita, codigoInvestimento, codigoPessoa);
       }
       
     } catch (SQLException e) {

@@ -7,23 +7,23 @@ import br.com.fiap.dao.FintechMetaDAO;
 
 import java.time.LocalDate;
 
-public class MetaDAOTeste {
+public class MetaDaoTeste {
     public static void main(String[] args){
         //Instancia o DAO
         FintechMetaDAO dao = new FintechMetaDAO();
 
-        //Instancia o investimento
+        //Instancia a Meta
         Meta meta = new Meta(1, 1, "nome", LocalDate.now(), LocalDate.now(), LocalDate.now(),0);
 
 
         //Cadastra no banco de dados
         dao.cadastrar(meta);
 
-        //Lista os gastos
+        //Lista as metas
         dao.listar();
         System.out.println(dao.listar());
 
-        //atualizar os gastos
+        //atualizar as metas
         dao.atualizar(meta);
 
         //Buscar por Id

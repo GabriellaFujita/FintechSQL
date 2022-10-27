@@ -62,7 +62,7 @@ public class FintechPessoaDAO implements PessoaDAO {
         String email = rs.getString("DS_EMAIL");
         
         //Cria um objeto Pessoa com as informações encontradas
-        Pessoa pessoa = new Pessoa(codigo, nome, cpf, LocalDate.now(), email);
+        Pessoa pessoa = new Pessoa(codigo, nome, cpf, LocalDate.now(),LocalDate.now(), email);
         //Adiciona a pessoa na lista
         lista.add(pessoa);
       }
@@ -147,7 +147,7 @@ public class FintechPessoaDAO implements PessoaDAO {
         dataNascimento.setTimeInMillis(data.getTime());
         String email = rs.getString("DS_EMAIL");
         
-        pessoa = new Pessoa(codigo, nome, cpf, LocalDate.now(), email);
+        pessoa = new Pessoa(codigo, nome, cpf,LocalDate.now(), LocalDate.now(), email);
       }
       
     } catch (SQLException e) {
