@@ -5,10 +5,7 @@ import java.util.Calendar;
 
 public class Transacao {
 
-	public Transacao(int codigo2, double valor2, Calendar dataTransacao2, int codigoGasto2, int codigoReceita2,
-			int codigoInvestimento2, int codigoPessoa2) {
-		// TODO Auto-generated constructor stub
-	}
+
 	public int codigo;
 	public double valor;
 	public Date data;
@@ -17,6 +14,10 @@ public class Transacao {
 	public int codigoReceita;
 	public int codigoInvestimento;
 	public int codigoPessoa;
+	public Transacao(int codigo2, double valor2, Calendar dataTransacao2, int codigoGasto2, int codigoReceita2,
+												 int codigoInvestimento2, int codigoPessoa2) {
+		// TODO Auto-generated constructor stub
+	}
 	public int getCodigo() {
 		return codigo;
 	}
@@ -65,6 +66,18 @@ public class Transacao {
 	public void setCodigoPessoa(int codigoPessoa) {
 		this.codigoPessoa = codigoPessoa;
 	}
-	
-	
+
+	@java.lang.Override
+	public java.lang.String toString() {
+		return "Transacao{" +
+				"codigo=" + codigo +
+				", valor=" + valor +
+				", data=" + data +
+				", dataTransacao=" + dataTransacao +
+				", codigoGasto=" + codigoGasto +
+				", codigoReceita=" + codigoReceita +
+				", codigoInvestimento=" + codigoInvestimento +
+				", codigoPessoa=" + codigoPessoa +
+				'}';
+	}
 }

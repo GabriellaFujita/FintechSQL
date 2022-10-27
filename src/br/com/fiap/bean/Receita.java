@@ -2,13 +2,14 @@ package br.com.fiap.bean;
 
 public class Receita {
 
-	public Receita(int codigo2, String nome2, double valor2, String tipo2) {
-		// TODO Auto-generated constructor stub
-	}
+
 	public int codigo;
 	public String nome;
 	public double valor;
 	public String tipo;
+	public Receita(int codigo2, String nome2, double valor2, String tipo2) {
+		// TODO Auto-generated constructor stub
+	}
 	public int getCodigo() {
 		return codigo;
 	}
@@ -33,5 +34,14 @@ public class Receita {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-	
+
+	@java.lang.Override
+	public java.lang.String toString() {
+		return "Receita{" +
+				"codigo=" + codigo +
+				", nome=" + nome +
+				", valor=" + valor +
+				", tipo=" + tipo +
+				'}';
+	}
 }

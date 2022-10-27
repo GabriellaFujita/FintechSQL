@@ -24,7 +24,7 @@ public class FintechInvestimentoDAO implements InvestimentoDAO {
       stmt.setDouble(2, investimento.getValor());
       stmt.setString(3, investimento.getTipo());
       stmt.setDouble(4, investimento.getValorRendimento());
-      java.sql.Date dataDisponivel = new java.sql.Date(investimento.getDataDisponivel().getTimeInMillis());
+      java.sql.Date dataDisponivel = new java.sql.Date(investimento.getDataDisponivel().getDayOfYear());
       stmt.setDate(5, dataDisponivel);    
             
       stmt.executeUpdate();
@@ -61,8 +61,8 @@ public class FintechInvestimentoDAO implements InvestimentoDAO {
         Calendar dataDisponivel = Calendar.getInstance();
         dataDisponivel.setTimeInMillis(data.getTime());
         
-        //Cria um objeto Investimento com as informações encontradas
-        Investimento investimento = new Investimento(codigo, nome, valor, tipo, valorRendimento, dataDisponivel);
+        //Cria um objeto Investimento com as informaï¿½ï¿½es encontradas
+        Investimento investimento = new Investimento();
         //Adiciona a meta na lista
         lista.add(investimento);
       }
@@ -91,7 +91,7 @@ public class FintechInvestimentoDAO implements InvestimentoDAO {
       stmt.setDouble(2, investimento.getValor());
       stmt.setString(3, investimento.getTipo());
       stmt.setDouble(4, investimento.getValorRendimento());
-      java.sql.Date dataDisponivel = new java.sql.Date(investimento.getDataDisponivel().getTimeInMillis());
+      java.sql.Date dataDisponivel = new java.sql.Date(investimento.getDataDisponivel().getDayOfYear());
       stmt.setDate(5, dataDisponivel);
       stmt.setInt(6, investimento.getCodigo());
 
@@ -149,7 +149,7 @@ public class FintechInvestimentoDAO implements InvestimentoDAO {
         Calendar dataDisponivel = Calendar.getInstance();
         dataDisponivel.setTimeInMillis(data.getTime());
         
-        investimento = new Investimento(codigo, nome, valor, tipo, valorRendimento, dataDisponivel);
+        investimento = new Investimento();
       }
       
     } catch (SQLException e) {

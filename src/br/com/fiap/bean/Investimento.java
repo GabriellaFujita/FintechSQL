@@ -1,5 +1,7 @@
 package br.com.fiap.bean;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Calendar;
 
 public class Investimento {
@@ -9,15 +11,22 @@ public class Investimento {
 	public double valor;
 	public String tipo;
 	public double valorRendimento;
-	public java.sql.Date data;
-	public Calendar dataDisponivel;
-	
-	
-	public Investimento(int codigo2, String nome2, double valor2, String tipo2, double valorRendimento2,
-			Calendar dataDisponivel2) {
-		// TODO Auto-generated constructor stub
+	public LocalDate data;
+	public LocalDate dataDisponivel;
+
+
+	public Investimento(int codigo, String nome, double valor, String tipo, double valorRendimento, LocalDate data, LocalDate dataDisponivel) {
+		this.codigo = codigo;
+		this.nome = nome;
+		this.valor = valor;
+		this.tipo = tipo;
+		this.valorRendimento = valorRendimento;
+		this.data = data;
+		this.dataDisponivel = dataDisponivel;
 	}
 
+	public Investimento() {
+	}
 
 	public int getCodigo() {
 		return codigo;
@@ -68,26 +77,33 @@ public class Investimento {
 		this.valorRendimento = valorRendimento;
 	}
 
-
-	public java.sql.Date getData() {
+	public LocalDate getData() {
 		return data;
 	}
 
-
-	public void setData(java.sql.Date data) {
+	public void setData(LocalDate data) {
 		this.data = data;
 	}
 
 
-	public Calendar getDataDisponivel() {
+	public LocalDate getDataDisponivel() {
 		return dataDisponivel;
 	}
 
-
-	public void setDataDisponivel(Calendar dataDisponivel) {
+	public void setDataDisponivel(LocalDate dataDisponivel) {
 		this.dataDisponivel = dataDisponivel;
 	}
-	
-	
-	
+
+	@java.lang.Override
+	public java.lang.String toString() {
+		return "Investimento{" +
+				"codigo=" + codigo +
+				", nome=" + nome +
+				", valor=" + valor +
+				", tipo=" + tipo +
+				", valorRendimento=" + valorRendimento +
+				", data=" + data +
+				", dataDisponivel=" + dataDisponivel +
+				'}';
+	}
 }

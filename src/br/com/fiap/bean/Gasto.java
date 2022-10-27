@@ -8,13 +8,14 @@ public double valor;
 public String tipo;
 
 
-public Gasto(int codigo2, String nome2, double valor2, String tipo2) {
-		// TODO Auto-generated constructor stub
+	public Gasto(int codigo, String nome, double valor, String tipo) {
+		this.codigo = codigo;
+		this.nome = nome;
+		this.valor = valor;
+		this.tipo = tipo;
 	}
 
-
-
-public int getCodigo() {
+	public int getCodigo() {
 	return codigo;
 }
 public void setCodigo(int codigo) {
@@ -39,4 +40,13 @@ public void setTipo(String tipo) {
 	this.tipo = tipo;
 }
 
+	@java.lang.Override
+	public java.lang.String toString() {
+		return "Gasto{" +
+				"codigo=" + codigo +
+				", nome=" + nome +
+				", valor=" + valor +
+				", tipo=" + tipo +
+				'}';
+	}
 }

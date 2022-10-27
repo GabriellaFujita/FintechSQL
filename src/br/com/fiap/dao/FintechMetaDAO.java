@@ -1,8 +1,6 @@
 package br.com.fiap.dao;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -22,9 +20,9 @@ public class FintechMetaDAO implements MetaDAO {
       stmt = conexao.prepareStatement(sql);
       stmt.setInt(1, meta.getCodigoPessoa());
       stmt.setString(2, meta.getNome());
-      java.sql.Date dataCriacao = new java.sql.Date(meta.getDataCriacao().getTimeInMillis());
+      Date dataCriacao = new Date(meta.getDataCriacao().getDayOfYear());
       stmt.setDate(3, dataCriacao);
-      java.sql.Date dataFinal = new java.sql.Date(meta.getDataFinal().getTimeInMillis());
+      Date dataFinal = new Date(meta.getDataFinal().getDayOfYear());
       stmt.setDate(4, dataFinal);
       stmt.setDouble(5, meta.getValor());
             
@@ -65,7 +63,7 @@ public class FintechMetaDAO implements MetaDAO {
         double valor = rs.getDouble("VL_META");
         
         //Cria um objeto Meta com as informações encontradas
-        Meta meta = new Meta(codigo, codigoPessoa, nome, dataCriacao, dataFinal, valor);
+        Meta meta = new Meta(1, 1, "nome", LocalDate.now(), LocalDate.now(), LocalDate.now(),0);
         //Adiciona a meta na lista
         lista.add(meta);
       }
@@ -92,9 +90,9 @@ public class FintechMetaDAO implements MetaDAO {
       stmt = conexao.prepareStatement(sql);
       stmt.setInt(1, meta.getCodigoPessoa());
       stmt.setString(2, meta.getNome());
-      java.sql.Date dataCriacao = new java.sql.Date(meta.getDataCriacao().getTimeInMillis());
+      Date dataCriacao = new Date(meta.getDataCriacao().getDayOfYear());
       stmt.setDate(3, dataCriacao);
-      java.sql.Date dataFinal = new java.sql.Date(meta.getDataFinal().getTimeInMillis());
+      Date dataFinal = new Date(meta.getDataFinal().getDayOfYear());
       stmt.setDate(4, dataFinal);
       stmt.setDouble(5, meta.getValor());
       stmt.setInt(6, meta.getCodigo());
@@ -155,7 +153,7 @@ public class FintechMetaDAO implements MetaDAO {
         dataFinal.setTimeInMillis(data2.getTime());
         double valor = rs.getDouble("VL_META");
         
-        meta = new Meta(codigo, codigoPessoa, nome, dataCriacao, dataFinal, valor);
+        meta = new Meta(1, 1, "nome", LocalDate.now(), LocalDate.now(), LocalDate.now(),0);
       }
       
     } catch (SQLException e) {

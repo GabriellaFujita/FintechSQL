@@ -3,11 +3,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import br.com.fiap.bean.Pessoa;
 import br.com.fiap.jdbc.EmpresaDBManager;
+import java.time.LocalDate;
 
 public class FintechPessoaDAO implements PessoaDAO {
 
@@ -22,7 +24,7 @@ public class FintechPessoaDAO implements PessoaDAO {
       stmt = conexao.prepareStatement(sql);
       stmt.setString(1, pessoa.getNome());
       stmt.setString(2, pessoa.getCpf());
-      java.sql.Date data = new java.sql.Date(pessoa.getDataNascimento().getTimeInMillis());
+      java.sql.Date data = new java.sql.Date(pessoa.getDataNascimento().getDayOfYear());
       stmt.setDate(3, data);
       stmt.setString(4, pessoa.getEmail());
             
@@ -60,7 +62,7 @@ public class FintechPessoaDAO implements PessoaDAO {
         String email = rs.getString("DS_EMAIL");
         
         //Cria um objeto Pessoa com as informações encontradas
-        Pessoa pessoa = new Pessoa(codigo, nome, cpf, dataNascimento, email);
+        Pessoa pessoa = new Pessoa(codigo, nome, cpf, LocalDate.now(), email);
         //Adiciona a pessoa na lista
         lista.add(pessoa);
       }
@@ -87,7 +89,7 @@ public class FintechPessoaDAO implements PessoaDAO {
       stmt = conexao.prepareStatement(sql);
       stmt.setString(1, pessoa.getNome());
       stmt.setString(2, pessoa.getCpf());
-      java.sql.Date data = new java.sql.Date(pessoa.getDataNascimento().getTimeInMillis());
+      java.sql.Date data = new java.sql.Date(pessoa.getDataNascimento().getDayOfYear());
       stmt.setDate(3, data);
       stmt.setString(4, pessoa.getEmail());
       stmt.setInt(5, pessoa.getCodigo());
@@ -145,7 +147,7 @@ public class FintechPessoaDAO implements PessoaDAO {
         dataNascimento.setTimeInMillis(data.getTime());
         String email = rs.getString("DS_EMAIL");
         
-        pessoa = new Pessoa(codigo, nome, cpf, dataNascimento, email);
+        pessoa = new Pessoa(codigo, nome, cpf, LocalDate.now(), email);
       }
       
     } catch (SQLException e) {
